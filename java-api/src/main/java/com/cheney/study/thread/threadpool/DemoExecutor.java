@@ -4,14 +4,13 @@ package com.cheney.study.thread.threadpool;
 import java.util.concurrent.*;
 
 /**
- * @Description:
- * @Date: Created in 2017-09-29 17:39
- * @Author: Cheney
- * @Modified by:
- *
+ *demo启动器
  */
 public class DemoExecutor {
-
+  /**
+   * demo启动器主方法
+   * @param args
+   */
   public static void main(String[] args) {
     Integer threadCounter = 0;
     BlockingQueue<Runnable> blockingQueue = new ArrayBlockingQueue<Runnable>(50);
