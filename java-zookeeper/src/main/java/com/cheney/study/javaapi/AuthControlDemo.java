@@ -12,9 +12,11 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * 腾讯课堂搜索 咕泡学院
- * 加群获取视频：608583947
- * 风骚的Michael 老师
+ * 说明: zookeeper权限测试
+ * @author  Cheney <br/>
+ * modified by :
+ * @version 1.0 <br/>
+ * Created in 2017-09-30 11:16
  */
 public class AuthControlDemo implements Watcher {
   private static CountDownLatch countDownLatch = new CountDownLatch(1);
