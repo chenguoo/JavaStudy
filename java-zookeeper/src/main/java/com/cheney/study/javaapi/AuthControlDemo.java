@@ -13,9 +13,9 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * 说明: zookeeper权限测试
- * @author  Cheney <br/>
+ * @author  Cheney <br>
  * modified by :
- * @version 1.0 <br/>
+ * @version 1.0 <br>
  * Created in 2017-09-30 11:16
  */
 public class AuthControlDemo implements Watcher {

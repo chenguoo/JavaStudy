@@ -12,9 +12,9 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 说明: zookeeper 基本增删改查
- * @author  Cheney <br/>
+ * @author  Cheney <br>
  * modified by :
- * @version 1.0 <br/>
+ * @version 1.0 <br>
  * Created in 2017-09-30 11:16
  */
 public class ApiOperatorDemo implements Watcher {

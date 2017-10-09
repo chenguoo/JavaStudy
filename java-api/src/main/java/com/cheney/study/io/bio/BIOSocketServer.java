@@ -5,10 +5,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * @Description:
- * @Date: Created in 2017-09-27 10:41
- * @Author: Cheney
- * @Modified by:
+ * 说明：测试BIOSocketClient
+ *
+ * @author Cheney <br>
+ * modified by:
+ * @version 1.0 <br>
+ * Created in 2017-09-27 10:41
  */
 public class BIOSocketServer {
 

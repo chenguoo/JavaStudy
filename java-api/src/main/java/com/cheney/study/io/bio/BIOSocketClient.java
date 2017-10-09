@@ -8,9 +8,9 @@ import java.net.Socket;
 /**
  * 说明：测试BIOSocketClient
  *
- * @author Cheney <br/>
+ * @author Cheney <br>
  * modified by:
- * @version 1.0 <br/>
+ * @version 1.0 <br>
  * Created in 2017-09-30 16:45
  */
 public class BIOSocketClient {

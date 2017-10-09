@@ -1,10 +1,13 @@
 package com.cheney.study.thread.threadpool;
 
+
 /**
- * @Description: 任务
- * @Date: Created in 2017-09-29 17:31
- * @Author: Cheney
- * @Modified by:
+ * 说明：测试任务类
+ *
+ * @author Cheney <br>
+ * modified by:
+ * @version 1.0 <br>
+ * Created in 2017-09-27 10:41
  */
 public class DemoTask implements Runnable{
   private String name = null;

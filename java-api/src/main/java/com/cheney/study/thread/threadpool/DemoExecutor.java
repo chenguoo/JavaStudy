@@ -9,7 +9,7 @@ import java.util.concurrent.*;
 public class DemoExecutor {
   /**
    * demo启动器主方法
-   * @param args
+   * @param args 系统参数
    */
   public static void main(String[] args) {
     Integer threadCounter = 0;

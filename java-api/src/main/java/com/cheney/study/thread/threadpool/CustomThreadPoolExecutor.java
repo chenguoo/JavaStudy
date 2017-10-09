@@ -5,13 +5,15 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Description: 自定义线程池
+ * 说明：自定义线程池
  *
  * 线程池提供了两个优秀的方法，我会强烈建议重写即beforeexecute()和afterexecute()方法。
  * 他们提供了很好的处理在执行要执行runnable对象生命周期。让我们看看在我们的customthreadpoolexecutor以上方法。
- * @Date: Created in 2017-09-29 17:32
- * @Author: Cheney
- * @Modified by:
+ *
+ * @author Cheney <br>
+ * modified by:
+ * @version 1.0 <br>
+ * Created in 2017-09-29 17:32
  */
 public class CustomThreadPoolExecutor extends ThreadPoolExecutor {
 
