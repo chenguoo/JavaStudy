@@ -1,7 +1,7 @@
 package com.cheney.study.concurrent.countdownlatch;
 
-public class Main {
-	public static void main(String[] args) 
+public class MainTest {
+	public static void main(String[] args)
 	{
 		boolean result = false;
 		try {
