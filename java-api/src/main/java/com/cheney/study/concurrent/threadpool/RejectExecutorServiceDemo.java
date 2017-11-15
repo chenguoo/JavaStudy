@@ -33,7 +33,7 @@ public class RejectExecutorServiceDemo {
                 new RejectedExecutionHandler() {
                     @Override
                     public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-                        System.out.println(r.toString() + " is discard!");
+                        System.out.println(r.toString() + " 被丢弃，这里可以做其他处理!");
                     }
                 });
         for (int i = 0 ;i<Integer.MAX_VALUE;i++) {
