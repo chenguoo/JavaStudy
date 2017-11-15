@@ -1,4 +1,4 @@
-package com.cheney.study.thread.threadpool;
+package com.cheney.study.concurrent.threadpool;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
