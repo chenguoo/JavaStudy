@@ -19,17 +19,17 @@ public class ScheduledExecutorServiceDemo {
         }, 0, 2, TimeUnit.SECONDS);
 */
         //固定延迟执行任务，任务完成后在等待固定延迟时间间隔后再执行下一个任务。（任务与任务有固定时间间隔）
-        System.out.println("2秒后开始执行："+System.currentTimeMillis() / 1000);
-        scheduledExecutorService.scheduleWithFixedDelay(()->{
+        System.out.println("2秒(initialDelay)后开始执行：" + System.currentTimeMillis() / 1000);
+        scheduledExecutorService.scheduleWithFixedDelay(() -> {
             try {
-                System.out.println("开始任务："+System.currentTimeMillis() / 1000);
+                System.out.println(Thread.currentThread().getName() + "开始任务：" + System.currentTimeMillis() / 1000);
                 //模拟任务执行不同的时间
-                Thread.sleep(Math.abs(new Random().nextInt() % 10000));
-                System.out.println("结束任务："+System.currentTimeMillis() / 1000);
+                Thread.sleep(Math.abs(new Random().nextInt(10) * 1000));
+                System.out.println(Thread.currentThread().getName() + "结束任务：" + System.currentTimeMillis() / 1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        },2,2,TimeUnit.SECONDS);
+        }, 2, 2, TimeUnit.SECONDS);
     }
 
 }
