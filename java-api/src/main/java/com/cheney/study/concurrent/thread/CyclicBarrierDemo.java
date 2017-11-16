@@ -1,4 +1,4 @@
-package com.cheney.study.concurrent;
+package com.cheney.study.concurrent.thread;
 
 import java.util.Random;
 import java.util.concurrent.BrokenBarrierException;
