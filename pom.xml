@@ -8,6 +8,8 @@
     <modules>
         <module>java-api</module>
         <module>java-zookeeper</module>
+        <module>java-netty3</module>
+        <module>java-netty5</module>
     </modules>
     <name>java-study-parent</name>
     <url>http://maven.apache.org</url>
@@ -61,4 +63,14 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
 </project>
