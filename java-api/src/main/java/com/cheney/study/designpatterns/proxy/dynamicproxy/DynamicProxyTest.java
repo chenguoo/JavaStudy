@@ -16,7 +16,7 @@ public class DynamicProxyTest {
   public static void main(String[] args) {
     // 目标对象
     IUserDao target = new UserDao();
-    // 【原始的类型 class com.cheney.study.designpatterns.proxy.UserDao】
+    // 【原始的类型 class UserDao】
     System.out.println("原始类型:" + target.getClass());
 
     // 给目标对象，创建代理对象

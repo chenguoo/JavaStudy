@@ -1,4 +1,4 @@
-package com.cheney.study.thread.threadpool;
+package com.cheney.study.concurrent.threadpool;
 
 
 /**

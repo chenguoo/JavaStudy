@@ -1,7 +1,5 @@
 package com.cheney.study.designpatterns.adapter;
 
-import com.sun.xml.internal.ws.org.objectweb.asm.ClassAdapter;
-
 /**
  * 说明:对象适配器测试
  *
