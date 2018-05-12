@@ -1,7 +1,7 @@
 package com.cheney.study.designpatterns.singleton;
 
 /**
- * 懒汉模式：延迟加载，第一次使用时被创建
+ * 懒汉模式1：延迟加载，第一次使用时被创建
  * 问题:多线程时有问题，不高效
  */
 public class LazySingleton {
