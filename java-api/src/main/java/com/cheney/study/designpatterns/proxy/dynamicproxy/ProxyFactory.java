@@ -1,7 +1,6 @@
 package com.cheney.study.designpatterns.proxy.dynamicproxy;
 
 import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
@@ -20,7 +19,7 @@ import java.lang.reflect.Proxy;
  * 代理类所在包:{@link java.lang.reflect.Proxy}
  * <p>
  * JDK实现代理只需要使用newProxyInstance方法,但是该方法需要接收三个参数,完整的写法是:
- * {@code static Object newProxyInstance(ClassLoader loader, Class<?>[] interfaces,InvocationHandler h )}
+ * {@code static Object newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h )}
  * <br>
  * 注意该方法是在Proxy类中是静态方法,且接收的三个参数依次为:
  * <p>
