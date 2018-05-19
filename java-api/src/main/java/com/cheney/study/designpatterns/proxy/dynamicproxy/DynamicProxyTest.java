@@ -2,6 +2,11 @@ package com.cheney.study.designpatterns.proxy.dynamicproxy;
 
 import com.cheney.study.designpatterns.proxy.IUserDao;
 import com.cheney.study.designpatterns.proxy.UserDao;
+import sun.misc.ProxyGenerator;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * 说明:
@@ -13,7 +18,7 @@ import com.cheney.study.designpatterns.proxy.UserDao;
  */
 public class DynamicProxyTest {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     // 目标对象
     IUserDao target = new UserDao();
     // 【原始的类型 class UserDao】
@@ -26,6 +31,16 @@ public class DynamicProxyTest {
 
     // 执行方法   【代理对象】
     proxy.save();
+
+
+
+    //下面的方法可以把这个代理对象输出到本地磁盘中:
+    byte[] bytes = ProxyGenerator.generateProxyClass("$Proxy0", new Class[]{IUserDao.class});
+    FileOutputStream os =new FileOutputStream("E://$Proxy0.class");
+    os.write(bytes);
+    os.close();
+
+
   }
 
 
