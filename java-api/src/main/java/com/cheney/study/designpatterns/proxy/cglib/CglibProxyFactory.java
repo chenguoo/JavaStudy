@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
  * <p>
  * Cglib代理
  * <p>
- * 静态代理和动态代理模式都是要求目标对象是实现一个接口的目标对象,但是有时候目标对象只是一个单独的对象,
+ * 静态代理和JDK动态代理模式都是要求目标对象是实现一个接口的目标对象,但是有时候目标对象只是一个单独的对象,
  * <p>
  * 并没有实现任何的接口,这个时候就可以使用以目标对象子类的方式类实现代理,这种方法就叫做:Cglib代理
  * <p>
@@ -42,35 +42,40 @@ import java.lang.reflect.Method;
  */
 public class CglibProxyFactory implements MethodInterceptor {
 
-  //维护目标对象
-  private Object target;
+    //维护目标对象
+    private Object target;
 
-  public CglibProxyFactory(Object target) {
-    this.target = target;
-  }
+    public CglibProxyFactory(Object target) {
+        this.target = target;
+    }
 
-  //给目标对象创建一个代理对象
-  public Object getProxyInstance() {
-    //1.工具类
-    Enhancer en = new Enhancer();
-    //2.设置父类
-    en.setSuperclass(target.getClass());
-    //3.设置回调函数
-    en.setCallback(this);
-    //4.创建子类(代理对象)
-    return en.create();
+    //给目标对象创建一个代理对象
+    public Object getProxyInstance() {
+        //1.工具类
+        Enhancer en = new Enhancer();
+        //2.设置父类
+        en.setSuperclass(target.getClass());
+        //3.设置回调函数
+        en.setCallback(this);
+        //4.创建子类(代理对象)
+        return en.create();
 
-  }
+    }
 
-  @Override
-  public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-    System.out.println("开始事务...");
+    @Override
+    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+        System.out.println("开始事务...");
 
-    //执行目标对象的方法
-    Object returnValue = method.invoke(target, objects);
+//    System.out.println(o.getClass());
+//    System.out.println(methodProxy.getClass());
+        //方式1.执行目标对象的方法
+//    Object returnValue = method.invoke(target, objects);
 
-    System.out.println("提交事务...");
+        //方式2.执行目标对象的方法
+        Object returnValue = methodProxy.invokeSuper(o, objects);
+//    System.out.println(invokeSuper);
+        System.out.println("提交事务...");
 
-    return returnValue;
-  }
+        return returnValue;
+    }
 }

@@ -10,7 +10,8 @@ package com.cheney.study.designpatterns.proxy.cglib;
  */
 public class UserDao {
 
-  public void save() {
+  public boolean save() {
     System.out.println("----已经保存数据!----");
+    return true;
   }
 }
