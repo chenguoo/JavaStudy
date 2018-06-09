@@ -10,5 +10,5 @@ package com.cheney.study;
  */
 public class ZkConstants {
 
-  public static final String CONNECT_STRING="192.168.2.101:2181,192.168.2.102:2181,192.168.2.103:2181,192.168.2.104:2181";
+  public static final String CONNECT_STRING="192.168.0.201:2181,192.168.0.202:2181,192.168.0.203:2181,192.168.0.204:2181";
 }
