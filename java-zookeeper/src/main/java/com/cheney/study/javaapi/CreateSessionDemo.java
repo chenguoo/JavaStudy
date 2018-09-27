@@ -20,8 +20,9 @@ public class CreateSessionDemo {
 
   public static void main(String[] args) throws IOException, InterruptedException {
     ZooKeeper zooKeeper = new ZooKeeper(ZkConstants.CONNECT_STRING, 5000, new Watcher() {
+      @Override
       public void process(WatchedEvent watchedEvent) {
-        //如果当前的连接状态是连接成功的，那么通过计数器去控制
+        //如果当前的连接状态是连接     成功的，那么通过计数器去控制
         if (watchedEvent.getState() == Event.KeeperState.SyncConnected) {
           countDownLatch.countDown();
           System.out.println(watchedEvent.getState());
@@ -30,5 +31,6 @@ public class CreateSessionDemo {
     });
     countDownLatch.await();
     System.out.println(zooKeeper.getState());
+    zooKeeper.close();
   }
 }
