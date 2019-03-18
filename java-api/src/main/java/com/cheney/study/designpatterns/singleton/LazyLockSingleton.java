@@ -4,21 +4,21 @@ package com.cheney.study.designpatterns.singleton;
  * 懒汉模式1：延迟加载，第一次使用时被创建
  * 问题:多线程时有问题，不高效
  */
-public class LazySingleton {
+public class LazyLockSingleton {
 
-    private LazySingleton() {
-        System.out.println("LazySingleton is create!");
+    private LazyLockSingleton() {
+        System.out.println("LazyLockSingleton is create!");
     }
 
-    private static LazySingleton instance = null;
+    private static LazyLockSingleton instance = null;
 
     /**
      * 多线程不高效，每次进入都会加锁
      * @return
      */
-    public static synchronized LazySingleton getInstance() {
+    public static synchronized LazyLockSingleton getInstance() {
         if (instance == null) {
-            instance = new LazySingleton();
+            instance = new LazyLockSingleton();
         }
         return instance;
     }
