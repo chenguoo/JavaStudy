@@ -33,19 +33,26 @@ public class ApiOperatorDemo implements Watcher {
 
     System.out.println(zookeeper.getState());
 
-    String path = "/node_e";
+    String path = "/zk-persis-mic";
 
     //创建临时节点，会话结束后会清除
-    String result = zookeeper.create(path, "123".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
+    String result = zookeeper.create(path, "0".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
     //zookeeper.getData("/node1",new ZkClientApiOperatorDemo(),stat); //增加一个
     System.out.println("创建临时节点成功：" + result);
+    Stat stat = new Stat();
+    //获取数据
+    byte[] data = zookeeper.getData(path, null, stat);
+    System.out.println(new String(data));
 
     //修改数据
-    zookeeper.setData(path, "mic123".getBytes(), -1);
-    Thread.sleep(2000);
-    //修改数据
-    zookeeper.setData(path, "mic234".getBytes(), -1);
-    Thread.sleep(2000);
+    zookeeper.setData(path, "1".getBytes(), stat.getVersion());
+    Thread.sleep(1000);
+    //获取数据
+    data = zookeeper.getData(path, null, stat);
+    Thread.sleep(1000);
+    System.out.println(new String(data));
+
+    zookeeper.delete(path, stat.getVersion());
 
     //创建节点和子节点
     path = "/node_test";
@@ -53,7 +60,7 @@ public class ApiOperatorDemo implements Watcher {
     zookeeper.create(path, "123".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
     TimeUnit.SECONDS.sleep(1);
 
-    Stat stat = zookeeper.exists(path + "/node1", true);
+    stat = zookeeper.exists(path + "/node1", true);
     if (stat == null) {//表示节点不存在
       zookeeper.create(path + "/node1", "123".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
       TimeUnit.SECONDS.sleep(1);
@@ -73,8 +80,10 @@ public class ApiOperatorDemo implements Watcher {
     zookeeper.delete(path + "/node1", -1);
     TimeUnit.SECONDS.sleep(2);
 
+    zookeeper.close();
   }
 
+  @Override
   public void process(WatchedEvent watchedEvent) {
     System.out.println("Watcher事件："+watchedEvent.getType());
 
