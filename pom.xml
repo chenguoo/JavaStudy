@@ -11,6 +11,7 @@
         <module>java-netty3</module>
         <module>java-netty5</module>
         <module>java-redis</module>
+        <module>java-mq</module>
     </modules>
     <name>java-study-parent</name>
     <url>http://maven.apache.org</url>
