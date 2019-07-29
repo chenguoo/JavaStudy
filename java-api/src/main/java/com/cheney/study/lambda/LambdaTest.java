@@ -1,10 +1,8 @@
 package com.cheney.study.lambda;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.IntSummaryStatistics;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Description:
@@ -23,10 +21,13 @@ public class LambdaTest {
         //length();
 
         //使用lambda表达式计算最大值,最小值,总和,平均值
-        maxAndMin();
+        //        maxAndMin();
+        //        flatMapTest();
 
-
+//        sunTest();
+        sunTest2();
     }
+
 
     /**
      * 使用lambda表达式map进行数据计算
@@ -80,5 +81,54 @@ public class LambdaTest {
         System.out.println("min:" + statistics.getMin());
         System.out.println("sum:" + statistics.getSum());
         System.out.println("average:" + statistics.getAverage());
+    }
+
+    public static void flatMapTest() {
+        Stream<List<Integer>> inputStream = Stream.of(
+                Arrays.asList(1),
+                Arrays.asList(2, 3),
+                Arrays.asList(4, 5, 6)
+        );
+        Stream<Integer> outputStream = inputStream.
+                flatMap((childList) -> childList.stream());
+        outputStream.forEach(System.out::println);
+    }
+
+    /**
+     * @return void
+     * @Description 求和
+     * @Author Cheney
+     * @Date 2019/7/29/029 19:20
+     * @Param []
+     */
+    public static void sunTest() {
+        int value = Arrays.asList(1, 2, 3, 4, 5).stream()
+                .reduce(0, (sun, integer) -> sun + integer).intValue();
+        System.out.println(value);
+
+    }
+
+    /**
+     * @return void
+     * @Description 求和
+     * @Author Cheney
+     * @Date 2019/7/29/029 19:20
+     * @Param []
+     */
+    public static void sunTest2() {
+        ArrayList<Map> maps = new ArrayList<>();
+        HashMap map1 = new HashMap<>(2);
+        map1.put("name", "zhanshang");
+        map1.put("age", 18);
+        maps.add(map1);
+        HashMap map2 = new HashMap<>(2);
+        map2.put("name", "lisi");
+        map2.put("age", 22);
+        maps.add(map2);
+        int age = maps.stream()
+                .mapToInt(map -> (int) map.get("age")).sum();
+
+        System.out.println(age);
+
     }
 }
