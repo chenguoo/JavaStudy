@@ -125,8 +125,7 @@ public class LambdaTest {
         map2.put("name", "lisi");
         map2.put("age", 22);
         maps.add(map2);
-        int age = maps.stream()
-                .mapToInt(map -> (int) map.get("age")).sum();
+        int age = maps.stream().mapToInt(map -> (int) map.get("age")).sum();
 
         System.out.println(age);
 
