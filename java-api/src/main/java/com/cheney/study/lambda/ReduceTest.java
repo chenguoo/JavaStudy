@@ -7,8 +7,6 @@ import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 
 /**
- *
- *
  * @version V1.0
  * @className: CollectTest
  * @author: Cheney
@@ -38,6 +36,9 @@ public class ReduceTest {
             return one + two;
         });
         System.out.println("final -> " + aBoolean);
+
+        //或者:
+        aBoolean = list.stream().reduce(0, Integer::sum);
     }
 
     @Test
