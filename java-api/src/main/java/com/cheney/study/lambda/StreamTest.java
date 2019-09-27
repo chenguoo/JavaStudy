@@ -12,7 +12,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * TODO
@@ -34,7 +36,7 @@ public class StreamTest {
     @Test
     public void createStream() throws IOException {
         //1.通过集合生成，应用中最常用的一种
-        List<Integer> integerList = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> integerList = asList(1, 2, 3, 4, 5);
         Stream<Integer> stream1 = integerList.stream();
 
         //2.通过数组生成
@@ -190,10 +192,49 @@ public class StreamTest {
         result = users.stream().collect(groupingBy(User::isWorking));
 
         //这个例子可能并不能看出分区和分类的区别，甚至觉得分区根本没有必要，换个明显一点的例子：
-        List<Integer> integerList = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> integerList = asList(1, 2, 3, 4, 5);
         Map<Boolean, List<Integer>> res = integerList.stream().collect(partitioningBy(i -> i < 3));
         // 返回值的键仍然是布尔类型，但是它的分类是根据范围进行分类的，分区比较适合处理根据范围进行分类
 
+    }
+
+    /**
+     * 最简单的合并两个流
+     *
+     * @param
+     * @return
+     * @author Cheney
+     * @date 2019/9/27/027 18:26
+     */
+    @Test
+    public void concatTest() {
+        Stream<Integer> stream1 = Stream.of(1, 2, 3);
+        Stream<Integer> stream2 = Stream.of(4, 5);
+        Stream<Integer> result = Stream.concat(stream1, stream2);
+        assertEquals(
+                asList(1, 2, 3, 4, 5),
+                result.collect(Collectors.toList())
+        );
+    }
+
+    /**
+     * concat()方法并不支持合并多个stream，这时需要用到of()，可以实现多个stream的合并
+     *
+     * @param
+     * @return
+     * @author Cheney
+     * @date 2019/9/27/027 18:27
+     */
+    @Test
+    public void ofTest() {
+        Stream<Integer> stream1 = Stream.of(1, 2, 3);
+        Stream<Integer> stream2 = Stream.of(4, 5);
+        Stream<Integer> stream3 = Stream.of(6, 7, 8);
+        Stream<Integer> result = Stream.of(stream1, stream2, stream3)
+                .flatMap(i -> i);
+        assertEquals(
+                asList(1, 2, 3, 4, 5, 6, 7, 8),
+                result.collect(Collectors.toList()));
     }
 
 
