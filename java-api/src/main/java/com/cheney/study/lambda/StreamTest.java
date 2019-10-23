@@ -151,6 +151,44 @@ public class StreamTest {
     }
 
     /**
+     * 按map的键排序
+     *
+     * @param
+     * @return
+     * @author Cheney
+     * @date 2019/10/23/023 15:59
+     */
+    @Test
+    public void sortedMapTest() {
+        HashMap<String, Integer> codes = new HashMap<>();
+        codes.put("United States", 1);
+        codes.put("Germany", 46);
+        codes.put("France", 33);
+        codes.put("China", 86);
+        codes.put("Pakistan", 92);
+
+        //按照Map的键排序
+        LinkedHashMap<String, Integer> sortedMap = codes.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                // .sorted(Map.Entry.comparingByKey().reversed())  //逆序
+                // .sorted(Map.Entry.comparingByValue())           //按值排序
+                .collect(toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (v1, v2) -> v2,
+                        LinkedHashMap::new));
+        //打印
+        sortedMap.entrySet().forEach(System.out::println);
+
+        // other 大家可能都知道TreeMap内的元素是有顺序的，所以利用TreeMap排序也是可取的一种方法。
+        // 您需要做的就是创建一个TreeMap对象，并将数据从HashMapput到TreeMap中，非常简单
+        // 将 `HashMap` 转为 `TreeMap`
+        Map sorted = new TreeMap(codes);
+        sorted.entrySet().forEach(System.out::println);
+
+    }
+
+    /**
      * 分组
      *
      * @param
