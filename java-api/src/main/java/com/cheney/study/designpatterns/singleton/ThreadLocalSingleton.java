@@ -6,12 +6,16 @@ package com.cheney.study.designpatterns.singleton;
  */
 public class ThreadLocalSingleton {
     private static final ThreadLocal<ThreadLocalSingleton> threadLocalInstance =
+            ThreadLocal.withInitial(() -> new ThreadLocalSingleton());
+    //等同于:
+    /*private static final ThreadLocal<ThreadLocalSingleton> threadLocalInstance =
             new ThreadLocal<ThreadLocalSingleton>() {
                 @Override
                 protected ThreadLocalSingleton initialValue() {
                     return new ThreadLocalSingleton();
                 }
             };
+    */
 
     private ThreadLocalSingleton() {
     }

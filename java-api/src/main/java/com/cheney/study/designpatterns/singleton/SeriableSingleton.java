@@ -29,8 +29,8 @@ public class SeriableSingleton implements Serializable {
      * 实际还是创建了两次,发生在JVM层面,相对来说比较安全,
      * 之前反序列化出来的对象会被GC回收
      */
-    // private  Object readResolve(){
-    //     return  INSTANCE;
-    // }
+     /*private  Object readResolve(){
+         return  INSTANCE;
+     }*/
 
 }

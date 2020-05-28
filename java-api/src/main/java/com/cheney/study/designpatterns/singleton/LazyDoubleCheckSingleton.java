@@ -8,7 +8,7 @@ package com.cheney.study.designpatterns.singleton;
  */
 public class LazyDoubleCheckSingleton {
     private LazyDoubleCheckSingleton() {
-        System.out.println("LazyLockSingleton is create!");
+        System.out.println("LazyDoubleCheckSingleton is create!");
     }
 
     //volatile 解决指令重排序的问题
@@ -20,7 +20,9 @@ public class LazyDoubleCheckSingleton {
     public static LazyDoubleCheckSingleton getInstance() {
         if (instance == null) {
             synchronized (LazyDoubleCheckSingleton.class) {
-                instance = new LazyDoubleCheckSingleton();
+                if (instance == null) {
+                    instance = new LazyDoubleCheckSingleton();
+                }
             }
         }
         return instance;
