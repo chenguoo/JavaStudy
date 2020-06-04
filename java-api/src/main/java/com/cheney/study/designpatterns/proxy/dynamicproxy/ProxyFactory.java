@@ -30,7 +30,7 @@ import java.lang.reflect.Proxy;
  * <p><p>
  * 代码示例:
  * 接口类IUserDao.java以及接口实现类,目标对象UserDao是一样的,没有做修改.
- *
+ * <p>
  * 在这个基础上,增加一个代理工厂类(CglibProxyFactory.java),
  * 将代理类写在这个地方,然后在测试类(需要使用到代理的代码)中先建立目标对象和代理对象的联系,然后调用代理对象的中同名方法
  * <p>
@@ -45,26 +45,27 @@ import java.lang.reflect.Proxy;
  */
 public class ProxyFactory {
 
-  //维护一个目标对象
-  private Object target;
+/*    //维护一个目标对象
+    private T target;
 
-  public ProxyFactory(Object target) {
-    this.target = target;
-  }
+    public ProxyFactory(T target) {
+        this.target = target;
+    }*/
 
 
-  //给目标对象生成代理对象
-  public Object getProxyInstance() {
-    return Proxy.newProxyInstance(
-      target.getClass().getClassLoader(),
-      target.getClass().getInterfaces(),
-      (proxy, method, args) -> {//InvocationHandler
-        System.out.println("JDK动态代理:开始事务");
-        //执行目标对象方法
-        Object returnValue = method.invoke(target, args);
-        System.out.println("JDK动态代理:提交事务");
-        return returnValue;
-      }
-    );
-  }
+    //给目标对象生成代理对象
+    public static Object getProxyInstance(Object target) {
+        Class<?> clazz = target.getClass();
+        return  Proxy.newProxyInstance(
+                clazz.getClassLoader(),
+                clazz.getInterfaces(),
+                (proxy, method, args) -> {//InvocationHandler
+                    System.out.println("JDK动态代理:开始事务");
+                    //执行目标对象方法
+                    Object returnValue = method.invoke(target, args);
+                    System.out.println("JDK动态代理:提交事务");
+                    return returnValue;
+                }
+        );
+    }
 }

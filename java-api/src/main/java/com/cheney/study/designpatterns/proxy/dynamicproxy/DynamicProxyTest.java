@@ -4,7 +4,6 @@ import com.cheney.study.designpatterns.proxy.IUserDao;
 import com.cheney.study.designpatterns.proxy.UserDao;
 import sun.misc.ProxyGenerator;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -25,18 +24,15 @@ public class DynamicProxyTest {
     System.out.println("原始类型:" + target.getClass());
 
     // 给目标对象，创建代理对象
-    IUserDao proxy = (IUserDao) new ProxyFactory(target).getProxyInstance();
+    IUserDao proxy = (IUserDao) ProxyFactory.getProxyInstance(target);
     // class $Proxy0   内存中动态生成的代理对象
     System.out.println("代理类型:" + proxy.getClass());
-
     // 执行方法   【代理对象】
     proxy.save();
 
-
-
     //下面的方法可以把这个代理对象输出到本地磁盘中:
     byte[] bytes = ProxyGenerator.generateProxyClass("$Proxy0", new Class[]{IUserDao.class});
-    FileOutputStream os =new FileOutputStream("E://$Proxy0.class");
+    FileOutputStream os =new FileOutputStream("D://$Proxy0.class");
     os.write(bytes);
     os.close();
 

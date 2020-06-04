@@ -12,7 +12,7 @@ public class ContainerSingleton {
     private ContainerSingleton(){}
     private static Map<String,Object> ioc = new ConcurrentHashMap<String,Object>();
 
-    //getInstance 线程不安全 所有内部加了synchronized关键字
+    //getInstance 线程不安全 所以内部加了synchronized关键字
     public static Object getInstance(String className){
         synchronized (ioc) {
             if (!ioc.containsKey(className)) {
