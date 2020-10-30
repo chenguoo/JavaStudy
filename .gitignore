@@ -25,4 +25,5 @@ nbdist/
 
 ### Others ###
 *.log
+.git - 副本
 
